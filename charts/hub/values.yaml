@@ -1,0 +1,5 @@
+image:
+  repository: hub
+  tag: latest
+service:
+  port: 8080
