@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hub
+  name: hub-deployment
 spec:
   replicas: 1
   selector:
@@ -13,7 +13,8 @@ spec:
         app: hub
     spec:
       containers:
-        - name: hub
+        - name: hub-container
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
