@@ -28,3 +28,27 @@ helm install hello ./charts/hub
 kubectl get pods
 kubectl get svc
 ```
+OR
+```
+terraform init
+terraform plan
+terraform apply
+```
+
+### Manual Reapply Image
+```
+# 1. Rebuild the image
+docker build -t hub:latest -f app/Dockerfile app/
+
+# 2. Reload it into your kind cluster
+kind load docker-image hub:latest --name hub-local
+
+# 3. Tell Terraform to reapply Helm chart (recreates pods)
+terraform apply -refresh-only
+```
+
+Next step options:
+
+Ansible
+Add WireGuard + Vault — secure access before exposing any service.
+CI/CD 
