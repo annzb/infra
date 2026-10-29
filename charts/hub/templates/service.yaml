@@ -3,10 +3,12 @@ kind: Service
 metadata:
   name: hub-service
 spec:
+  type: {{ .Values.service.type }}
   selector:
     app: hub
   ports:
-    - port: 8080
+    - port: {{ .Values.service.port }}
       targetPort: 8080
-      nodePort: 30080
-  type: NodePort
+      {{- if eq .Values.service.type "NodePort" }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
