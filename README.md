@@ -51,5 +51,4 @@ Next step options:
 
 Ansible
 Add WireGuard + Vault — secure access before exposing any service.
-CI/CD
-Terraform-AWS port
+CI/CD 
